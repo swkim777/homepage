@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jowon Technical Archive</title>
+    <title>Posts - Jowon Technical Archive</title>
     <style>
         :root {
             --bg-color: #ffffff;
@@ -94,74 +94,52 @@
             padding: 60px 1.5rem 0 1.5rem;
         }
 
-        .profile-section {
-            margin-bottom: 70px;
-        }
-
-        .profile-section h1 {
+        .page-title {
             font-size: 1.8rem;
             font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .post-item {
+            margin-bottom: 60px;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
             margin-bottom: 16px;
         }
 
-        .profile-section p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
+        .post-title {
+            font-size: 1.3rem;
+            font-weight: 600;
         }
 
-        section {
-            margin-bottom: 50px;
-        }
-
-        section h2 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-        }
-
-        .archive-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .archive-item {
-            display: flex;
-            align-items: flex-start;
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 1.05rem;
-            padding: 2px 0;
-        }
-
-        .archive-meta {
+        .post-date {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            width: 50px;
-            flex-shrink: 0;
         }
 
-        .archive-title {
-            flex-grow: 1;
-            margin-right: 16px;
+        .post-content {
+            font-size: 1.05rem;
         }
 
-        .archive-item:hover .archive-title {
+        .post-content p {
+            margin-bottom: 16px;
+        }
+
+        /* design.md 규격 인라인 코드 데코레이션 */
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            background-color: var(--surface);
+            padding: 2px 6px;
+            border-radius: 4px;
             color: var(--accent-color);
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
-
-        .archive-date {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            text-align: right;
-            flex-shrink: 0;
         }
     </style>
 </head>
@@ -172,43 +150,36 @@
             <a href="index.html" class="logo-link">Jowon Technical Archive</a>
             <div class="nav-links">
                 <a href="portfolio.html">Projects</a>
-                <a href="blog.html">Posts</a>
+                <a href="blog.html" class="active">Posts</a>
                 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">⊙</button>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="profile-section">
-            <h1>Jowon Home</h1>
-            <p>IT, SW, AI 및 금융 분석 분야의 복잡한 R&D 성과와 전문 지식을 정제된 텍스트 구조로 아카이빙합니다. 오직 글의 본질과 계층적 논리 전개에만 집중하는 공간입니다.</p>
-        </section>
+        <h1 class="page-title">Blog & Insights</h1>
 
-        <section>
-            <h2>Recent Threads (All Logs)</h2>
-            <div class="archive-list">
-                <a href="portfolio.html" class="archive-item">
-                    <span class="archive-meta">[01]</span>
-                    <span class="archive-title">드론 기반 재난 모니터링 프레임워크 연구</span>
-                    <span class="archive-date">2026-04</span>
-                </a>
-                <a href="portfolio.html" class="archive-item">
-                    <span class="archive-meta">[02]</span>
-                    <span class="archive-title">Agentic AI 아키텍처 설계를 위한 고찰</span>
-                    <span class="archive-date">Portfolio</span>
-                </a>
-                <a href="blog.html" class="archive-item">
-                    <span class="archive-meta">[03]</span>
-                    <span class="archive-title">주식 투자 전략 가이드북 집필 완료 소회</span>
-                    <span class="archive-date">2026-03</span>
-                </a>
-                <a href="blog.html" class="archive-item">
-                    <span class="archive-meta">[04]</span>
-                    <span class="archive-title">Python 데이터 처리 및 업무 효율화 구조화</span>
-                    <span class="archive-date">2026-02</span>
-                </a>
+        <article class="post-item">
+            <div class="post-header">
+                <h2 class="post-title">주식 투자 전략 가이드북 집필 완료 소회</h2>
+                <span class="post-date">2026.03.25</span>
             </div>
-        </section>
+            <div class="post-content">
+                <p>오랜 기간 준비했던 데이터 기반의 정량적 금융 분석 기법과 다층적 자산 배분 투자 전략 가이드북 프로젝트를 성황리에 매듭지었습니다.</p>
+                <p>장황하고 모호한 예측 지표들을 철저히 필터링하고 명확한 통계적 검증 데이터 구조를 시각화하여 지식화하는 전반의 과정을 통찰해 보며 배운 엔지니어링적 교훈들을 상세 아카이브 글로 정리해 나갈 예정입니다.</p>
+            </div>
+        </article>
+
+        <article class="post-item">
+            <div class="post-header">
+                <h2 class="post-title">Python 데이터 처리 및 업무 효율화</h2>
+                <span class="post-date">2026.02.10</span>
+            </div>
+            <div class="post-content">
+                <p>금융 분석 및 수많은 기술 원천 데이터 파이프라인을 다룰 때 <code>openpyxl</code> 라이브러리를 활용하여 인간의 수동 개입 없이 완벽하게 정형화된 오토메이션 엑셀 문서로 빌드하는 자동화 코어 모듈 구현 팁입니다.</p>
+                <p>파편화된 원시 로그 로우 데이터를 체계적인 그리드 격자 데이터셋으로 구조화하는 핵심 자동 세그먼트 스크립트를 공유하고 불필요한 루프 낭비를 줄이는 가독성 최적화 방안을 논합니다.</p>
+            </div>
+        </article>
     </main>
 
     <script>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jowon Homepage</title>
+    <style>
+        /* 변수 정의 (기본 Light 테마) */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --card-bg: #f8f9fa;
+            --border-color: #e9ecef;
+            --accent-color: #0076ff;
+            --secondary-text: #666666;
+        }
+
+        /* Black 테마 */
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #f5f5f7;
+            --card-bg: #1e1e1e;
+            --border-color: #333333;
+            --accent-color: #2f95dc;
+            --secondary-text: #a1a1a6;
+        }
+
+        /* 기본 스타일 초기화 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* 네비게이션 바 */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* 테마 전환 버튼 스타일 */
+        .theme-toggle-btn {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .theme-toggle-btn:hover {
+            opacity: 0.9;
+            border-color: var(--accent-color);
+        }
+
+        /* 메인 컨텐츠 영역 */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 프로필 섹션 */
+        .profile-section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .profile-section p {
+            font-size: 1.15rem;
+            color: var(--secondary-text);
+        }
+
+        /* 섹션 공통 */
+        section {
+            margin-bottom: 50px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* 카드 레이아웃 (프로젝트 & 블로그 공통) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-body h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .card-body p {
+            color: var(--secondary-text);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">Jowon Homepage</div>
+            <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">테마 변경 (Black)</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <h1>Jowon Home</h1>
+            <p>복잡한 기술 정보를 체계적으로 구조화하고, 유의미한 가치를 만들어내는 공간입니다. 이곳에서 저의 주요 R&D 프로젝트와 기술적 생각들을 공유합니다.</p>
+        </section>
+
+        <section id="portfolio">
+            <h2>Current Projects & Portfolio</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tag-container">
+                            <span class="tag">R&D</span>
+                            <span class="tag">AI</span>
+                            <span class="tag">Edge AI</span>
+                        </div>
+                        <h3>드론 기반 재난 모니터링 프레임워크</h3>
+                        <p>드론과 Edge AI 기기를 활용하여 열지수(WBGT) 기반의 위험 분석 및 실시간 행동 감지를 수행하는 통합 시스템 개발 프로젝트입니다.</p>
+                    </div>
+                    <div class="date">진행 기간: 2026.04 ~ 2027.12</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tag-container">
+                            <span class="tag">Framework</span>
+                            <span class="tag">Agentic AI</span>
+                        </div>
+                        <h3>Agentic AI 아키텍처 연구</h3>
+                        <p>다양한 대형 언어 모델(LLM) 환경에서 효율적인 프롬프트 엔지니어링 및 워크플로 자동화를 구현하기 위한 커스텀 AI 에이전트 설계 예시입니다.</p>
+                    </div>
+                    <div class="date">포트폴리오</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2>Blog & Insights</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tag-container">
+                            <span class="tag">Publishing</span>
+                        </div>
+                        <h3>주식 투자 전략 가이드북 집필 완료 소회</h3>
+                        <p>데이터 기반의 정량 분석 기법과 투자 전략을 체계적으로 구조화하여 작성한 가이드북 프로젝트를 마무리하며 배운 점들을 정리했습니다.</p>
+                    </div>
+                    <div class="date">2026.03.25</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tag-container">
+                            <span class="tag">Tech</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <h3>Python 데이터 처리 및 업무 효율화</h3>
+                        <p>openpyxl 라이브러리를 활용해 수많은 금융 및 기술 데이터를 체계적인 엑셀 시트로 구조화하고 자동화 문서를 빌드하는 팁을 공유합니다.</p>
+                    </div>
+                    <div class="date">2026.02.10</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 초기 테마 설정 검사 (사용자 시스템 설정 확인 또는 로컬스토리지 확인)
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateButtonText(currentTheme);
+
+        function toggleTheme() {
+            const htmlElement = document.documentElement;
+            let theme = htmlElement.getAttribute('data-theme');
+            
+            if (theme === 'light') {
+                theme = 'dark';
+            } else {
+                theme = 'light';
+            }
+            
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme); // 상태 저장
+            updateButtonText(theme);
+        }
+
+        function updateButtonText(theme) {
+            const button = document.getElementById('themeToggle');
+            if (theme === 'dark') {
+                button.textContent = '테마 변경 (Light)';
+            } else {
+                button.textContent = '테마 변경 (Black)';
+            }
+        }
+    </script>
+</body>
+</html>

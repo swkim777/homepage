@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jowon Technical Archive</title>
+    <title>Projects - Jowon Technical Archive</title>
     <style>
+        /* index.html과 동일한 디자인 토큰 변수 공유 */
         :root {
             --bg-color: #ffffff;
             --surface: #f8f9fa;
@@ -94,74 +95,61 @@
             padding: 60px 1.5rem 0 1.5rem;
         }
 
-        .profile-section {
-            margin-bottom: 70px;
-        }
-
-        .profile-section h1 {
+        .page-title {
             font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 40px;
         }
 
-        .profile-section p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-        }
-
-        section {
+        .project-item {
             margin-bottom: 50px;
         }
 
-        section h2 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin-bottom: 24px;
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 8px;
+            margin-bottom: 16px;
         }
 
-        .archive-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
         }
 
-        .archive-item {
-            display: flex;
-            align-items: flex-start;
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 1.05rem;
-            padding: 2px 0;
-        }
-
-        .archive-meta {
+        .project-date {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            width: 50px;
-            flex-shrink: 0;
         }
 
-        .archive-title {
-            flex-grow: 1;
-            margin-right: 16px;
+        /* design.md에서 규정한 계층형 리스트 구조 정밀 통제 */
+        .project-content {
+            font-size: 1.05rem;
         }
 
-        .archive-item:hover .archive-title {
-            color: var(--accent-color);
-            text-decoration: underline;
-            text-underline-offset: 4px;
+        .project-content p {
+            margin-bottom: 12px;
         }
 
-        .archive-date {
-            font-size: 0.95rem;
+        .project-content ul {
+            list-style-type: square;
+            padding-left: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .project-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content ul ul {
+            list-style-type: circle;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
             color: var(--text-muted);
-            text-align: right;
-            flex-shrink: 0;
         }
     </style>
 </head>
@@ -171,7 +159,7 @@
         <div class="nav-container">
             <a href="index.html" class="logo-link">Jowon Technical Archive</a>
             <div class="nav-links">
-                <a href="portfolio.html">Projects</a>
+                <a href="portfolio.html" class="active">Projects</a>
                 <a href="blog.html">Posts</a>
                 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">⊙</button>
             </div>
@@ -179,36 +167,41 @@
     </header>
 
     <main>
-        <section class="profile-section">
-            <h1>Jowon Home</h1>
-            <p>IT, SW, AI 및 금융 분석 분야의 복잡한 R&D 성과와 전문 지식을 정제된 텍스트 구조로 아카이빙합니다. 오직 글의 본질과 계층적 논리 전개에만 집중하는 공간입니다.</p>
-        </section>
+        <h1 class="page-title">Current Projects & Portfolio</h1>
 
-        <section>
-            <h2>Recent Threads (All Logs)</h2>
-            <div class="archive-list">
-                <a href="portfolio.html" class="archive-item">
-                    <span class="archive-meta">[01]</span>
-                    <span class="archive-title">드론 기반 재난 모니터링 프레임워크 연구</span>
-                    <span class="archive-date">2026-04</span>
-                </a>
-                <a href="portfolio.html" class="archive-item">
-                    <span class="archive-meta">[02]</span>
-                    <span class="archive-title">Agentic AI 아키텍처 설계를 위한 고찰</span>
-                    <span class="archive-date">Portfolio</span>
-                </a>
-                <a href="blog.html" class="archive-item">
-                    <span class="archive-meta">[03]</span>
-                    <span class="archive-title">주식 투자 전략 가이드북 집필 완료 소회</span>
-                    <span class="archive-date">2026-03</span>
-                </a>
-                <a href="blog.html" class="archive-item">
-                    <span class="archive-meta">[04]</span>
-                    <span class="archive-title">Python 데이터 처리 및 업무 효율화 구조화</span>
-                    <span class="archive-date">2026-02</span>
-                </a>
+        <article class="project-item">
+            <div class="project-header">
+                <h2 class="project-title">드론 기반 재난 모니터링 프레임워크 연구</h2>
+                <span class="project-date">2026.04 ~ 2027.12</span>
             </div>
-        </section>
+            <div class="project-content">
+                <p>드론과 Edge AI 기기를 융합하여 재난 현장을 정밀 관제하는 통합 모니터링 프레임워크 핵심 아키텍처 설계 R&D 시스템입니다.</p>
+                <ul>
+                    <li>열지수(WBGT) 기반 실시간 위험도 분석 파이프라인 정립</li>
+                    <li>Edge AI 탑재 하드웨어를 통한 온디바이스 실시간 위험 행동 알고리즘 연산</li>
+                    <li>이동형 드론 노드 간 데이터 무선 동기화 최적화 구성</li>
+                </ul>
+            </div>
+        </article>
+
+        <article class="project-item">
+            <div class="project-header">
+                <h2 class="project-title">Agentic AI 아키텍처 연구</h2>
+                <span class="project-date">Portfolio</span>
+            </div>
+            <div class="project-content">
+                <p>다양한 대형 언어 모델(LLM) 생태계 위에서 자율적으로 판단하고 동작하는 워크플로 자동화 커스텀 에이전트 설계 사양서입니다.</p>
+                <ul>
+                    <li>효율적인 컨텍스트 전달을 위한 고도화된 프롬프트 엔지니어링 룰셋 패턴화</li>
+                    <li>반복 태스크 수행을 위한 상태 머신 기반 에이전틱 오케스트레이션 아키텍처
+                        <ul>
+                            <li>동적 조건 제어 분기(Dynamic Routing Optimization)</li>
+                            <li>에러 자기 회복 루프(Self-Correction Loop) 검증 완료</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </article>
     </main>
 
     <script>
