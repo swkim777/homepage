@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jowon Homepage</title>
+    <meta name="description" content="AI, IT 기술 전문가이자 창의적 파트너 조원의 인사이트 및 브랜드 기록형 블로그">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jowon Homepage">
+    <meta property="og:description" content="IT, SW, AI 및 금융 분석 분야의 복잡한 R&D 성과와 전문 지식을 아카이빙합니다.">
+    <style>
+        :root {
+            /* 생각노트 스타일의 라이트 모드 (따뜻한 미색 페이퍼 톤) */
+            --bg-color: #FAF9F6;
+            --surface: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-muted: #666666;
+            --border-color: #EAEAEA;
+            --accent-color: #2B4C7E; /* 지적인 클래식 네이비 블루 */
+        }
+
+        [data-theme="dark"] {
+            /* 차분한 다크 그레이 모드 */
+            --bg-color: #121214;
+            --surface: #1C1C1E;
+            --text-main: #E3E3E6;
+            --text-muted: #8E8E93;
+            --border-color: #2C2C2E;
+            --accent-color: #5B86E5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8; /* 장문 독서에 최적화된 넓은 행간 */
+            letter-spacing: -0.01em;
+            word-break: keep-all;
+        }
+
+        /* 넉넉한 여백 시스템을 고려한 전역 컨테이너 */
+        .container {
+            max-width: 1200px; /* 전체 화면 최대 폭 확장 */
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header (Sticky & Editorial Minimal) */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+        }
+
+        .logo-link {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-main);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Hero Section (슬로건 중심의 에디토리얼 연출) */
+        .hero-section {
+            padding: 100px 0 60px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem; /* 타이포그래피 스케일 확대 */
+            font-weight: 800;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-section p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 720px; /* 본문 가독성 최대 폭 제한 */
+            margin-bottom: 32px;
+        }
+
+        .racoon-link-container {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-racoon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px; /* 더 트렌디하고 부드러운 라운드 적용 */
+            background-color: var(--surface);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .btn-racoon:hover {
+            border-color: var(--accent-color);
+            color: #FFFFFF;
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* 매거진/생각노트 스타일의 대형 카드 그리드 뷰 레이아웃 */
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 데스크톱 2단 구성 */
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        @media (max-width: 768px) {
+            .magazine-grid {
+                grid-template-columns: 1fr; /* 모바일 대응 1단 구성 */
+                gap: 32px;
+            }
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* 포스트 카드 스타일 */
+        .post-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-6px); /* 미세한 상단 이동 효과 */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        /* 가상의 에디토리얼 섬네일 영역 (배경색 위주로 깔끔하게 구성) */
+        .post-thumbnail {
+            width: 100%;
+            height: 200px;
+            background-color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            opacity: 0.85;
+        }
+
+        .post-content {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .post-category {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+        }
+
+        .post-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .post-card:hover .post-title {
+            color: var(--accent-color);
+        }
+
+        .post-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        /* 에디토리얼 하단 푸터 (뉴스레터 및 외부 플랫폼 채널 접점) */
+        footer {
+            background-color: var(--surface);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .footer-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .newsletter-box {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .newsletter-box h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 10px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        .newsletter-submit {
+            padding: 10px 20px;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-submit:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-link">Jowon Homepage</a>
+            <div class="nav-links">
+                <a href="portfolio.html">Projects</a>
+                <a href="blog.html">Posts</a>
+                <a href="racoon/index.html">Racoon</a>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="테마 전환">⊙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-section">
+            <h1>기획과 개발자의 시선으로 본<br>인사이트, 트렌드, R&D의 기록</h1>
+            <p>IT, SW, AI 및 금융 분석 분야의 복잡한 기술적 깊이와 사적인 관점을 결합하여 정제된 텍스트 구조로 아카이빙합니다. 흐름을 타고 유기적으로 읽히는 공간을 지향합니다.</p>
+            
+            <div class="racoon-link-container">
+                <a href="racoon/index.html" class="btn-racoon">
+                    <span>🦝 Racoon Space →</span>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <span>Recent Insights</span>
+            </div>
+            
+            <div class="magazine-grid">
+                <a href="portfolio.html" class="post-card">
+                    <div class="post-thumbnail">🛸</div>
+                    <div class="post-content">
+                        <div class="post-category">R&D Framework</div>
+                        <h2 class="post-title">드론 기반 재난 모니터링 프레임워크 연구</h2>
+                        <p class="post-excerpt">폭염 및 고온 환경에서도 안정적으로 구동되는 무인 항공 관제 시스템 설계와 AI 연동 재난 분석 통합 코어 로직 개발 고찰.</p>
+                        <div class="post-footer">
+                            <span>2026-04</span>
+                            <span>5 min read</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="portfolio.html" class="post-card">
+                    <div class="post-thumbnail">🧠</div>
+                    <div class="post-content">
+                        <div class="post-category">AI Architecture</div>
+                        <h2 class="post-title">Agentic AI 아키텍처 설계를 위한 고찰</h2>
+                        <p class="post-excerpt">단순 LLM 호출을 넘어 멀티 에이전트 오케스트레이션과 금융 퀀트 시스템 자동 처리를 구현하기 위한 자율적 에이전트 설계 백서.</p>
+                        <div class="post-footer">
+                            <span>Portfolio</span>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="blog.html" class="post-card">
+                    <div class="post-thumbnail">📈</div>
+                    <div class="post-content">
+                        <div class="post-category">Finance & Insight</div>
+                        <h2 class="post-title">주식 투자 전략 가이드북 집필 완료 소회</h2>
+                        <p class="post-excerpt">AI 인텔리전스로 구축하는 실전 주식 투자 전략 가이드북을 탈고하며 느낀 정량 분석과 인간 투자자의 통찰이 융합되는 지점에 대하여.</p>
+                        <div class="post-footer">
+                            <span>2026-03</span>
+                            <span>4 min read</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="blog.html" class="post-card">
+                    <div class="post-thumbnail">🐍</div>
+                    <div class="post-content">
+                        <div class="post-category">Software</div>
+                        <h2 class="post-title">Python 데이터 처리 및 업무 효율화 구조화</h2>
+                        <p class="post-excerpt">파이프라인을 구축해 반복되는 리포팅 및 분석 가공 영역의 복잡성을 제거하고 모듈화된 자동화를 달성한 실무 코드 아카이빙.</p>
+                        <div class="post-footer">
+                            <span>2026-02</span>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Jowon Homepage</h3>
+                <p>© 2026 Jowon. All rights reserved.</p>
+                <p style="margin-top: 8px; font-size: 0.85rem;">IT, SW, AI & Financial Technology Expertise.</p>
+            </div>
+            <div class="newsletter-box">
+                <h4>Weekly Newsletter</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">정제된 트렌드 분석과 기술 인사이트를 이메일로 받아보세요.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('구동 테스트 단계입니다.');">
+                    <input type="email" class="newsletter-input" placeholder="이메일 주소를 입력하세요" required>
+                    <button type="submit" class="newsletter-submit">구독</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateToggleIcon(currentTheme);
+
+        function toggleTheme() {
+            const htmlElement = document.documentElement;
+            let theme = htmlElement.getAttribute('data-theme');
+            theme = (theme === 'light') ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            updateToggleIcon(theme);
+        }
+
+        function updateToggleIcon(theme) {
+            const toggleBtn = document.getElementById('themeToggle');
+            toggleBtn.textContent = (theme === 'dark') ? '○' : '⊙';
+        }
+    </script>
+</body>
+</html>
